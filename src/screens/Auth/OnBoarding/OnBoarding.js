@@ -9,9 +9,10 @@ import {
 } from "react-native";
 import { Images } from "../../../Images";
 import { hp, wp } from "../../../components/ResponsiveComponent";
-import { colors } from "../../../constants";
+import { colors, Routes } from "../../../constants";
 import ResponsiveText from "../../../components/ResponsiveText";
 import { Spacer } from "../../../components/Spacer"
+import { MainContainer } from "../../../components/MainContainer";
 
 const { width } = Dimensions.get("window");
 
@@ -58,61 +59,59 @@ const Onboarding = ({ navigation }) => {
     );
 
     return (
-        <View style={styles.container}>
-            <FlatList
-                ref={flatListRef}
-                data={onboardingData}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                horizontal
-                pagingEnabled
-                showsHorizontalScrollIndicator={false}
-                onScroll={handleScroll}
-            />
+        <MainContainer>
+            <View>
+                <FlatList
+                    ref={flatListRef}
+                    data={onboardingData}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id}
+                    horizontal
+                    pagingEnabled
+                    showsHorizontalScrollIndicator={false}
+                    onScroll={handleScroll}
+                />
 
-            <View style={styles.dotContainer}>
-                {onboardingData.map((_, index) => (
-                    <View
-                        key={index}
-                        style={[
-                            styles.dot,
-                            { opacity: currentIndex === index ? 1 : 0.3 },
-                        ]}
-                    />
-                ))}
+                <View style={styles.dotContainer}>
+                    {onboardingData.map((_, index) => (
+                        <View
+                            key={index}
+                            style={[
+                                styles.dot,
+                                { opacity: currentIndex === index ? 1 : 0.3 },
+                            ]}
+                        />
+                    ))}
+                </View>
+
+                {currentIndex === onboardingData.length - 1 ? (
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={styles.button}
+                        onPress={() => navigation.navigate(Routes.walletSetup)}>
+                        <ResponsiveText style={styles.buttonText}>Get Started</ResponsiveText>
+                    </TouchableOpacity>
+                ) : (
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={styles.button}
+                        onPress={() => {
+                            flatListRef.current.scrollToIndex({
+                                index: currentIndex + 1,
+                                animated: true,
+                            });
+                        }}>
+                        <ResponsiveText style={styles.buttonText}>Next</ResponsiveText>
+                    </TouchableOpacity>
+                )}
             </View>
+        </MainContainer>
 
-            {currentIndex === onboardingData.length - 1 ? (
-                <TouchableOpacity
-                    activeOpacity={0.8}
-                    style={styles.button}
-                    onPress={() => navigation.replace("Home")}>
-                    <ResponsiveText style={styles.buttonText}>Get Started</ResponsiveText>
-                </TouchableOpacity>
-            ) : (
-                <TouchableOpacity
-                    activeOpacity={0.8}
-                    style={styles.button}
-                    onPress={() => {
-                        flatListRef.current.scrollToIndex({
-                            index: currentIndex + 1,
-                            animated: true,
-                        });
-                    }}>
-                    <ResponsiveText style={styles.buttonText}>Next</ResponsiveText>
-                </TouchableOpacity>
-            )}
-        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.grayBg,
-        alignItems: "center",
-        justifyContent: "center",
-    },
+
     slide: {
         alignItems: "center",
         justifyContent: "center",
@@ -135,23 +134,25 @@ const styles = StyleSheet.create({
     dotContainer: {
         flexDirection: "row",
         marginBottom: wp(4),
+        alignSelf: 'center'
     },
     dot: {
         width: 10,
         height: 10,
         borderRadius: 5,
-        backgroundColor: colors.orange1,
+        backgroundColor: colors.white,
         marginHorizontal: wp(1),
     },
     button: {
-        width: wp(88),
-        backgroundColor: colors.orange,
+        width: wp(86),
+        backgroundColor: colors.white,
         padding: wp(4),
-        borderRadius: 30,
+        borderRadius: 15,
         marginBottom: hp(3),
+        alignSelf: 'center'
     },
     buttonText: {
-        color: colors.white,
+        color: colors.black,
         fontWeight: "bold",
         fontSize: 16,
         textAlign: 'center'

@@ -1,7 +1,12 @@
 
 import Welcome from "./Welcome/Welcome";
 import Onboarding from "./OnBoarding/OnBoarding"
+import ImportWallet from "./ImportWallet/ImportWallet"
+import WalletSetup from "./WalletSetup/WalletSetup"
+import CreateWallet from "./CreateWallet/CreateWallet"
+import SeedPhrase from "./SeedPhrase/SeedPhrase"
+import ConfirmSeedPhrase from "./ConfirmSeedPhrase/ConfirmSeedPhrase"
 
 export {
-    Welcome, Onboarding
+    Welcome, Onboarding, ImportWallet, WalletSetup, CreateWallet, SeedPhrase, ConfirmSeedPhrase
 }

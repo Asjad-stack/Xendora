@@ -1,8 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { height, totalSize, width } from 'react-native-dimension';
-
-
+import { height, width } from 'react-native-dimension';
 
 export const Spacer = ({ customHeight }) => {
     return (

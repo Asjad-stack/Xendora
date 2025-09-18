@@ -11,6 +11,11 @@ const AuthNavigation = () => {
         <Navigator screenOptions={{ headerShown: false }}>
             <Screen name={Routes.welcome} component={Auth.Welcome} />
             <Screen name={Routes.oBoarding} component={Auth.Onboarding} />
+            <Screen name={Routes.walletSetup} component={Auth.WalletSetup} />
+            <Screen name={Routes.createWallet} component={Auth.CreateWallet} />
+            <Screen name={Routes.importWallet} component={Auth.ImportWallet} />
+            <Screen name={Routes.seedPhrase} component={Auth.SeedPhrase} />
+            <Screen name={Routes.confirmSeedPhrase} component={Auth.ConfirmSeedPhrase} />
         </Navigator>
     );
 };

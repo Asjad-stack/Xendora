@@ -8,9 +8,11 @@ export const Routes = {
     // AuthNavigation
     welcome: "welcome",
     oBoarding: "oBoarding",
-
-
-
+    walletSetup: "walletSetup",
+    importWallet: "importWallet",
+    createWallet: "createWallet",
+    seedPhrase: "seedPhrase",
+    confirmSeedPhrase: "confirmSeedPhrase",
 
     // AppNavigation
 

@@ -1,22 +1,25 @@
 import React from 'react';
-import { StyleSheet, StatusBar, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
 import { MainContainer } from '../../../components/MainContainer';
 import ResponsiveText from '../../../components/ResponsiveText'
 import { colors, Routes } from '../../../constants';
 import { Images } from '../../../Images/index'
 import { wp, hp } from '../../../components/ResponsiveComponent'
+import Spacer from '../../../components/Spacer';
 
 const Welcome = (props) => {
     return (
-        <MainContainer style={styles.mainContainer}>
-            <StatusBar barStyle={'light-content'} translucent />
-            <View style={{ flex: 1 }}>
+        <MainContainer>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Image source={Images.bitCoinWelcomeLogo} resizeMode='contain' style={styles.bitCoinWelcomeLogo} />
-                <ResponsiveText style={styles.welcomeText}>Welcome to Your Web3 Wallet</ResponsiveText>
             </View>
-            <TouchableOpacity activeOpacity={0.8} style={styles.getStartedButton} onPress={() => props?.navigation.navigate(Routes.oBoarding)}>
-                <ResponsiveText style={styles.walletOptionsText}>Get Started</ResponsiveText>
-            </TouchableOpacity>
+            <>
+                <ResponsiveText style={styles.welcomeText}>Welcome to Your Web3 Wallet</ResponsiveText>
+                <Spacer customHeight={hp(1)} />
+                <TouchableOpacity activeOpacity={0.8} style={styles.getStartedButton} onPress={() => props?.navigation.navigate(Routes.oBoarding)}>
+                    <ResponsiveText style={styles.walletOptionsText}>Get Started</ResponsiveText>
+                </TouchableOpacity>
+            </>
         </MainContainer>
     );
 };
@@ -33,24 +36,26 @@ const styles = StyleSheet.create({
     },
     bitCoinWelcomeLogo: {
         width: wp(50),
+        // height: hp(50),
         alignSelf: 'center'
     },
     welcomeText: {
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: '600',
         color: colors.white,
         textAlign: 'center',
     },
     getStartedButton: {
-        width: wp(88),
+        width: wp(86),
         padding: wp(4),
-        borderRadius: 30,
+        borderRadius: 15,
         marginBottom: hp(3),
-        backgroundColor: colors.orange,
+        backgroundColor: colors.white,
         alignItems: 'center'
     },
     walletOptionsText: {
-        color: colors.white,
-        fontSize: 14,
+        fontSize: 16,
+        fontWeight: '800',
+        color: colors.black,
     },
 });

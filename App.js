@@ -16,7 +16,6 @@ const App = () => {
     <View style={{ flex: 1 }}>
       <Navigation />
     </View>
-
   )
 }
 
