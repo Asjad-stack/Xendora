@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { generateAllWallets } from "../../../../walletCreationHelper/index"
+import { InsertAllChains, insertWallet } from '../.././../../Database/DataBase';
+import { Routes } from "../../../../constants";
+// import { useDispatch } from 'react-redux';
+
 
 const useConnfirmSeedPhrase = (props) => {
+
+    // const dispatch = useDispatch()
+
 
     const previousSeedPhrase = props?.route?.params?.mnemonic
     const seedWords = previousSeedPhrase.split(' ');
@@ -107,42 +114,42 @@ const useConnfirmSeedPhrase = (props) => {
                         setLoading(false)
                         console.log('allwalletsallwalletsallwallets', allwallets);
 
-                        // const waletresponse = await insertWallet(
-                        //     'Multi-Chain-Wallet',
-                        //     allwallets?.evmWallet?.address,
-                        //     allwallets?.evmWallet?.privateKey,
-                        //     'Ethereum',
-                        //     previousSeedPhrase.trim(),
-                        //     allwallets?.bitcoin?.address,
-                        //     allwallets?.bitcoin?.privateKey,
-                        //     allwallets?.solana?.address,
-                        //     allwallets?.solana?.privateKey,
-                        //     1,
-                        //     allwallets?.tron?.address,
-                        //     allwallets?.tron?.privateKey,
+                        const waletresponse = await insertWallet(
+                            'Multi-Chain-Wallet',
+                            allwallets?.evmWallet?.address,
+                            allwallets?.evmWallet?.privateKey,
+                            'Ethereum',
+                            previousSeedPhrase.trim(),
+                            allwallets?.bitcoin?.address,
+                            allwallets?.bitcoin?.privateKey,
+                            allwallets?.solana?.address,
+                            allwallets?.solana?.privateKey,
+                            1,
+                            allwallets?.tron?.address,
+                            allwallets?.tron?.privateKey,
 
-                        // )
+                        )
 
-                        // console.log('waletresponsewaletresponse', waletresponse);
+                        console.log('waletresponsewaletresponse', waletresponse);
 
-                        // if (waletresponse) {
+                        if (waletresponse) {
 
-                        //     let responsechains = await InsertAllChains(waletresponse, MultiChainChainsArray)
-                        //     console.log('responsechainsresponsechainsresponsechains', responsechains);
-                        //     if (responsechains) {
-                        //         setLoading(false)
-                        //         dispatch(SaveUserData({}));
+                            let responsechains = await InsertAllChains(waletresponse, MultiChainChainsArray)
+                            console.log('responsechainsresponsechainsresponsechains', responsechains);
+                            if (responsechains) {
+                                setLoading(false)
+                                // dispatch(SaveUserData({}));
 
-                        //         props.navigation.replace(routes.successWallet)
-                        //     }
-                        // }
+                                props.navigation.replace(Routes.successScreen)
+                            }
+                        }
 
                     }, 2);
 
 
                 } catch (error) {
-                    console.log('error n creating wallet on create flow', error);
                     setLoading(false)
+                    console.log('error n creating wallet on create flow', error);
 
                 }
 
@@ -155,8 +162,8 @@ const useConnfirmSeedPhrase = (props) => {
             }
         } catch (error) {
 
-            console.log('errorerrorerror', error);
             setLoading(false)
+            console.log('errorerrorerror', error);
 
         }
 

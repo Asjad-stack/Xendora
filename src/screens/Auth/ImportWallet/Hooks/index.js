@@ -48,7 +48,7 @@ const useImportWallet = () => {
             setTimeout(() => {
                 setIsSubmitting(false);
                 Alert.alert("Wallet imported", "Your wallet has been securely imported.");
-                navigation?.replace?.("Home");
+                // navigation?.replace?.("Home");
             }, 900);
         } catch (e) {
             setIsSubmitting(false);

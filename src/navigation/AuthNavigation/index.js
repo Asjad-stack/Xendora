@@ -16,6 +16,7 @@ const AuthNavigation = () => {
             <Screen name={Routes.importWallet} component={Auth.ImportWallet} />
             <Screen name={Routes.seedPhrase} component={Auth.SeedPhrase} />
             <Screen name={Routes.confirmSeedPhrase} component={Auth.ConfirmSeedPhrase} />
+            <Screen name={Routes.successScreen} component={Auth.SuccessScreen} />
         </Navigator>
     );
 };

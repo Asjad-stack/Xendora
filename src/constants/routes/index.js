@@ -13,7 +13,7 @@ export const Routes = {
     createWallet: "createWallet",
     seedPhrase: "seedPhrase",
     confirmSeedPhrase: "confirmSeedPhrase",
-
+    successScreen:"successScreen"
     // AppNavigation
 
 

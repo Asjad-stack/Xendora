@@ -1,17 +1,17 @@
 
 
-export const generateAllWallets = async (seed) => {
+import {  generateEvmWallet } from "../EvmWalletHelper";
 
+export const generateAllWallets = async (seed) => {
     try {
         const [evmWallet] = await Promise.all([
             generateEvmWallet(seed),
         ]);
-
         return {
             evmWallet
         }
     } catch (error) {
-
+        console.log('errorerrorerrorerrorerrorerrorrrorerrorerror', error);
         console.log('errorerrorerror', error);
         throw error
     }

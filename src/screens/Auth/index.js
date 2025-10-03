@@ -6,7 +6,8 @@ import WalletSetup from "./WalletSetup/WalletSetup"
 import CreateWallet from "./CreateWallet/CreateWallet"
 import SeedPhrase from "./SeedPhrase/SeedPhrase"
 import ConfirmSeedPhrase from "./ConfirmSeedPhrase/ConfirmSeedPhrase"
+import SuccessScreen from "./SuccessScreen/SuccessScreen";
 
 export {
-    Welcome, Onboarding, ImportWallet, WalletSetup, CreateWallet, SeedPhrase, ConfirmSeedPhrase
+    Welcome, Onboarding, ImportWallet, WalletSetup, CreateWallet, SeedPhrase, ConfirmSeedPhrase, SuccessScreen
 }
